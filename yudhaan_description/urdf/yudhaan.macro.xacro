@@ -10,13 +10,13 @@
             <collision name="link_right_wheel_collision">
               <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
               <geometry>
-                <cylinder length="0.04" radius="0.1"/>
+                <cylinder length="0.04" radius="0.05"/>
               </geometry>
             </collision>
             <visual name="${name}_visual">
               <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
               <geometry>
-                <cylinder length="0.04" radius="0.1"/>
+                <cylinder length="0.04" radius="0.05"/>
               </geometry>
             </visual>
         </link>
@@ -29,7 +29,6 @@
         <parent link="link_chassis"/>
         <axis rpy="0 0 0" xyz="0 1 0"/>
         <limit effort="10000" velocity="1000"/>
-        <joint_properties damping="1.0" friction="1.0"/>
       </joint>
     </xacro:macro>
 
