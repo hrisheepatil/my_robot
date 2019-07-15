@@ -1,39 +1,34 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://wiki.ros.org/xacro">
-    <xacro:macro name="link_wheel" params="name">
+    <xacro:macro name="link_cyl" params="name mass r l origin_rpy origin_xyz">
         <link name="${name}">
             <inertial>
-              <mass value="2"/>
-              <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-              <inertia ixx="0.00526666666667" ixy="0" ixz="0" iyy="0.00526666666667" iyz="0" izz="0.01"/>
+              <mass value="${mass}"/>
+              <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
+              <inertia ixx="${mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0" iyy="${mass*(3*r*r+l*l)/12}" iyz = "0" izz="${mass*(r*r)/2}" />
             </inertial>
-            <collision name="link_right_wheel_collision">
-              <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+            <collision name="${name}_collision">
+              <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
               <geometry>
-                <cylinder length="0.04" radius="0.05"/>
+                <cylinder length="${l}" radius="${r}"/>
               </geometry>
             </collision>
             <visual name="${name}_visual">
-              <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+              <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
               <geometry>
-                <cylinder length="0.04" radius="0.05"/>
+                <cylinder length="${l}" radius="${r}"/>
               </geometry>
             </visual>
         </link>
     </xacro:macro>
  
-    <xacro:macro name="joint_wheel" params="name child origin_xyz">
-      <joint name="${name}" type="continuous">
-        <origin rpy="0 0 0" xyz="${origin_xyz}"/>
+    <xacro:macro name="joint_cyl" params="name parent child origin_rpy origin_xyz axis_rpy axis_xyz type">
+      <joint name="${name}" type="${type}">
+        <origin rpy="${origin_rpy}" xyz="${origin_xyz}"/>
         <child link="${child}"/>
-        <parent link="link_chassis"/>
-        <axis rpy="0 0 0" xyz="0 1 0"/>
+        <parent link="${parent}"/>
+        <axis rpy="${axis_rpy}" xyz="${axis_xyz}"/>
         <limit effort="10000" velocity="1000"/>
       </joint>
-    </xacro:macro>
-
-    <xacro:macro name="cylinder_inertia" params="mass r l"> 
-      <inertia ixx="${mass*(3*r*r+l*l)/12}" ixy = "0" ixz = "0" iyy="${mass*(3*r*r+l*l)/12}" iyz = "0" izz="${mass*(r*r)/2}" /> 
-    </xacro:macro>
- 
+    </xacro:macro> 
 </robot>

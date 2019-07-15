@@ -29,5 +29,5 @@ class yudhaanControl:
 
 if __name__ == '__main__':
 	rospy.init_node('yudhaan_control', anonymous=True)
-	yc = yudhaanControl([0.0, 0.0, 0.0, 0.1])
+	yc = yudhaanControl([0.0, 0.0, 0.0, 0.5])
 	rospy.spin()
