@@ -26,6 +26,11 @@
   <xacro:link_cyl name="link_rear_support" mass="0.0" r="0.025" l="0.05" origin_rpy="0.0 0.0 0.0" origin_xyz="0.0 0.0 0.0" />
   <xacro:joint_cyl name="joint_rear_support"  parent="link_chassis"  child="link_rear_support"  origin_rpy="0.0 0.0 0.0"  origin_xyz="-0.275 0.0 -0.075" axis_rpy="0 0 0" axis_xyz="0 0 0" type="fixed" /> 
 
+<!-- Create robot support-->
+  <xacro:link_cyl name="robot_support" mass="0.0" r="0.1" l="0.06" origin_rpy="0.0 0.0 0.0" origin_xyz="0.0 0.0 0.0" />
+  <xacro:joint_cyl name="joint_robot_support"  parent="link_chassis"  child="robot_support"  origin_rpy="0.0 0.0 0.0"  origin_xyz="0.0 0.0 0.075" axis_rpy="0 0 0" axis_xyz="0 0 0" type="fixed" />
+
+
   <!-- Create laser sensor -->
   <xacro:link_cyl name="sensor_laser" mass="0.0" r="0.04" l="0.05" origin_rpy="0.0 0.0 0.0" origin_xyz="0.0 0.0 0.0" />
   <xacro:joint_cyl name="joint_sensor_laser"  parent="link_chassis"  child="sensor_laser"  origin_rpy="0.0 0.0 0.0"  origin_xyz="0.25 0.0 0.075" axis_rpy="0 0 0" axis_xyz="0 0 0" type="fixed" />

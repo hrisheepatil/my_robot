@@ -18,9 +18,8 @@ class yudhaanControl:
 		y = self.pose[1] - msg_sub.pose.pose.position.y 
 		z = self.pose[2] - msg_sub.pose.pose.position.z
 		a = self.yaw_from_quaternion(msg_sub.pose.pose.orientation)
-		print(a)
 		msg_pub = Twist()
-		msg_pub.angular.z = self.pose[3]
+		msg_pub.linear.x = self.pose[3]
 		self.vel_pub.publish(msg_pub)
 
 	def yaw_from_quaternion(self, q):
@@ -29,5 +28,5 @@ class yudhaanControl:
 
 if __name__ == '__main__':
 	rospy.init_node('yudhaan_control', anonymous=True)
-	yc = yudhaanControl([0.0, 0.0, 0.0, 0.5])
+	yc = yudhaanControl([0.0, 0.0, 0.0, 0.1])
 	rospy.spin()
