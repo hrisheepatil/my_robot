@@ -17,8 +17,8 @@
   </include>
 
     <param name="robot_description" command="xacro --inorder '$(find yudhaan_robot)/yudhaan_description/urdf/yudhaan.xacro'" />
-    <arg name="x" default="0"/>
-    <arg name="y" default="0"/>
+    <arg name="x" default="2"/>
+    <arg name="y" default="2"/>
     <arg name="z" default="0.1"/>
     <node name="yudhaan_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model yudhaan -x $(arg x) -y $(arg y) -z $(arg z)" />
 
